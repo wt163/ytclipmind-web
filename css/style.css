@@ -1,0 +1,664 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+:root {
+    --content-left: 95px;
+    --content-right: 95px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.125rem; }
+
+p {
+    margin-bottom: 1rem;
+    line-height: 2.25rem;
+    font-size: 1rem;
+    letter-spacing: 0.03125rem;
+}
+
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #ff8c8c, #fff2f2);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 923px;
+    padding: 0 2rem;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.cta-button {
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 999px;
+    padding: 0.5625rem 1rem;
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 463px;
+    height: 78px;
+    margin-top: 2rem; /* 往下移动 */
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Plan Sections */
+.plan-section {
+    padding: 4rem 0;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.plan-header {
+    text-align: left;
+    margin-bottom: 3rem;
+    padding-left: var(--content-left);
+    padding-right: var(--content-right);
+}
+
+.plan-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 2.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.plan-subtitle {
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 2.75rem;
+    color: #666;
+}
+
+.section-label {
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 2.75rem;
+    color: #000;
+    padding-left: var(--content-left);
+    padding-right: var(--content-right);
+    margin-top: 2rem; /* carousel下边距(2rem) + 这里(2rem) = 4rem，与其他标题间距一致 */
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.pro-section {
+    background-color: #fff;
+    padding-top: 1px !important; /* 覆盖默认的4rem上边距，设置为20px */
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    margin: 2rem auto;
+    width: 600px; /* 缩小宽度从750px到600px */
+    text-align: center;
+}
+
+.screenshot-wrapper {
+    position: relative;
+    height: 296px; /* 缩小高度从370px到296px (保持比例) */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screenshot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.screenshot.active {
+    opacity: 1;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ff4c4c;
+}
+
+.dot:hover {
+    background-color: #ff8c8c;
+}
+
+/* Features Container */
+.features-container {
+    display: flex;
+    gap: 4rem;
+    padding: 0 var(--content-right) 0 var(--content-left);
+    margin: 2rem 0; /* 减少margin从3rem到2rem，让整体更紧凑 */
+}
+
+.features-left, .features-right {
+    flex: 1;
+}
+
+/* Fix alignment - right content should align with left content lines */
+/* User icon (48px) + icon margin (12px) + User title (36px) + title margin (16px) = 112px */
+.features-content-right {
+    margin-top: 112px;
+}
+
+/* Ensure right side content aligns with left side feature items */
+.features-right .features-content-right .features-list {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Additional users section doesn't need margin adjustment as both sides have user-icon and user-title */
+
+/* Workflow Diagram Space */
+.workflow-diagram-space {
+    text-align: center;
+    padding: 1px 0; /* 从15px缩小到8px（约一半） */
+    margin: 0; /* 移除额外margin */
+}
+
+.workflow-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.pro-diagram {
+    padding: 1px 0; /* Pro版本也缩小到8px（约一半） */
+}
+
+/* Additional Users Section */
+.additional-users-section {
+    display: flex;
+    gap: 4rem;
+    padding: 0 var(--content-right) 0 var(--content-left);
+    margin: 2rem 0 0 0; /* 移除下边距，只保留上边距 */
+    /* 移除max-width限制，让内容更好地适应屏幕 */
+}
+
+.additional-users-left {
+    flex: 1;
+    /* 移除max-width和transform限制，使用更稳定的布局 */
+    min-width: 0; /* 确保flex item能够正确收缩 */
+    display: flex;
+    flex-direction: column;
+}
+
+.additional-users-right {
+    flex: 1;
+    /* 移除max-width和transform限制，使用更稳定的布局 */
+    min-width: 0; /* 确保flex item能够正确收缩 */
+    display: flex;
+    flex-direction: column;
+}
+
+.user-icon {
+    width: 48px;
+    height: 48px;
+    background: url('../assets/user-icon.png') no-repeat center;
+    background-size: contain;
+    margin-bottom: 0.75rem;
+}
+
+.user-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ff4c4c;
+    line-height: 2.25rem;
+    letter-spacing: 0.03125rem;
+    margin-bottom: 1rem;
+    height: 36px;
+}
+
+.features-list {
+    margin-bottom: 2rem;
+}
+
+/* Ensure right side content aligns with left side feature items */
+.features-right .features-content-right .features-list {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.feature-item {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 2.25rem;
+    letter-spacing: 0.03125rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.feature-description {
+    font-size: 1rem;
+    font-weight: 400; /* 从300 (light) 改为400 (regular) */
+    line-height: 2.25rem;
+    letter-spacing: 0.03125rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+/* Diagram Section */
+.diagram-section {
+    position: relative;
+    height: 820px;
+    margin: 4rem 0;
+    overflow: hidden;
+}
+
+.diagram-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1863px;
+    height: 820px;
+    object-fit: contain;
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 10px 0 4rem 0; /* 上边距改为10px，下边距保持4rem */
+    background-color: #fff;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 2.75rem;
+    margin-bottom: 3rem;
+    padding-left: var(--content-left);
+    padding-right: var(--content-right);
+    text-align: left;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--content-right) 0 var(--content-left);
+}
+
+.pricing-card {
+    background: #f9eded;
+    border-radius: 50px;
+    padding: 1.5rem 2rem;
+    min-height: 215px; /* ensure a comfortable base size while allowing content to grow */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden; /* prevent visual overflow when content grows */
+    box-sizing: border-box;
+}
+
+.pricing-card.lifetime {
+    grid-column: 1 / -1;
+}
+
+.plan-name {
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.15; /* tighter line-height to avoid vertical overflow */
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+.plan-price {
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.price {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.1; /* tighten to keep within the card */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.period {
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+.billing-info {
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+.billing-info.discount {
+    color: #00b800;
+    font-weight: 400;
+}
+
+/* Footer */
+.footer {
+    background: #d9d9d9;
+    padding: 1.5rem 0;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.footer-logo {
+    flex: 0 0 auto;
+}
+
+.footer-logo .logo {
+    width: 312px;
+    height: 312px;
+    object-fit: contain;
+}
+
+.footer-links {
+    position: absolute;
+    right: 368px; /* Move more to the left to match Figma design */
+    text-align: left;
+}
+
+.footer-title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
+    margin-bottom: 0; /* Remove extra margin to match Figma spacing */
+}
+
+.footer-list {
+    list-style: none;
+    margin: 0;
+    padding-top: 0;
+}
+
+.footer-list li {
+    margin-bottom: 0;
+    height: 60px; /* Ensure consistent height matching Figma */
+    display: flex;
+    align-items: center;
+}
+
+.footer-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
+    color: rgba(0,0,0,0.66);
+    transition: color 0.3s ease;
+    display: block;
+    text-decoration: none;
+    height: 60px;
+    line-height: 60px; /* Match the component height */
+}
+
+.footer-link:hover {
+    color: #FF4C4C;
+}
+
+/* Legal Pages */
+.legal-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.legal-header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.legal-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.75rem;
+    letter-spacing: 0.03125rem;
+}
+
+.legal-content {
+    flex: 1;
+    padding: 2.5rem 150px;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.legal-text {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    color: #000;
+}
+
+.legal-text h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 2rem 0 1rem 0;
+}
+
+.legal-text h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.legal-text p {
+    margin-bottom: 1rem;
+    line-height: 1.75rem;
+}
+
+.legal-text ul {
+    margin: 1rem 0 1rem 1.5rem;
+}
+
+.legal-text li {
+    margin-bottom: 0.5rem;
+    line-height: 1.75rem;
+}
+
+.legal-text a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.legal-text a:hover {
+    color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 400px;
+        font-size: 1.5rem;
+        height: 60px;
+    }
+    
+    .carousel-container {
+        width: 90%;
+    }
+    
+    .features-container,
+    .additional-users-section {
+        flex-direction: column;
+        padding: 0 2rem;
+        gap: 2rem;
+    }
+    
+    .plan-header,
+    .section-label {
+        padding: 0 2rem;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        padding: 0 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-logo .logo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .legal-content {
+        padding: 2rem;
+    }
+
+    /* Reset margin on small screens for features alignment */
+    .features-content-right {
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .plan-title,
+    .plan-subtitle,
+    .section-label,
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .carousel-container {
+        width: 95%;
+    }
+    
+    .screenshot-wrapper {
+        height: 250px;
+    }
+}

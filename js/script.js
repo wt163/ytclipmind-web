@@ -44,7 +44,7 @@ class CarouselController {
         this.type = type; // 'free' or 'pro'
         this.currentIndex = 0;
         this.autoPlayInterval = null;
-        this.autoPlayDelay = 3000; // 3 seconds
+        this.autoPlayDelay = 4000; // 4 seconds
         
         this.init();
     }

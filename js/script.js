@@ -86,7 +86,10 @@ class CarouselController {
     showSlide(index) {
         // Hide all screenshots
         this.screenshots.forEach((screenshot, i) => {
-            screenshot.classList.toggle('active', i === index);
+            const isActive = i === index;
+            screenshot.classList.toggle('active', isActive);
+            screenshot.style.opacity = '';
+            screenshot.style.visibility = '';
         });
         
         // Update dots
@@ -168,27 +171,6 @@ function smoothScrollTo(elementId) {
         });
     }
 }
-
-// Add loading states for images
-function handleImageLoading() {
-    const screenshots = document.querySelectorAll('.screenshot');
-    
-    screenshots.forEach(img => {
-        if (!img.complete) {
-            img.addEventListener('load', function() {
-                this.style.opacity = '1';
-            });
-            
-            img.addEventListener('error', function() {
-                console.warn('Failed to load image:', this.src);
-                // Could show placeholder or fallback image
-            });
-        }
-    });
-}
-
-// Initialize image loading handling
-document.addEventListener('DOMContentLoaded', handleImageLoading);
 
 /**
  * Mobile touch support for carousels
@@ -295,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
     carouselDots.forEach(dot => {
         dot.setAttribute('tabindex', '0');
         dot.setAttribute('role', 'button');
-        dot.setAttribute('aria-label', `Go to slide ${dot.getAttribute('data-index') + 1}`);
+        dot.setAttribute('aria-label', `Go to slide ${parseInt(dot.getAttribute('data-index'), 10) + 1}`);
     });
 });
 

@@ -446,7 +446,7 @@ a {
 /* Footer */
 .footer {
     background: #d9d9d9;
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 1rem;
     margin-top: 4rem;
 }
 
@@ -455,14 +455,17 @@ a {
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 var(--content-left) 0 var(--content-right);
+    padding: 0 var(--content-left);
+    padding-right: 368px;
 }
 
 .footer-content {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 2rem;
+    width: 100%;
+    min-height: 312px;
 }
 
 .footer-logo {
@@ -479,23 +482,19 @@ a {
 .footer-links {
     flex: 0 0 auto;
     text-align: left;
-    position: static;
-    right: auto;
-    top: auto;
-    transform: none;
-    margin-left: auto;
-    margin-right: 200px;
 }
 
 .footer-copyright {
-    margin: 1.5rem 0 0;
-    padding-top: 1rem;
+    width: 100%;
+    margin: 1rem 0 0;
+    padding: 0.75rem 1rem 0;
     text-align: center;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.02rem;
     color: rgba(0, 0, 0, 0.66);
+    margin-bottom: 0;
 }
 
 .footer-title {
@@ -542,10 +541,28 @@ a {
     box-sizing: border-box;
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (min-width: 901px) and (max-width: 1200px) {
+    .footer-inner {
+        padding-right: 240px;
+    }
+
+    .footer-content {
+        min-height: 200px;
+    }
+
     .footer-logo .logo {
         width: 200px;
         height: 200px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-inner {
+        padding-right: var(--content-left);
+    }
+
+    .footer-content {
+        min-height: 0;
     }
 }
 
@@ -667,17 +684,16 @@ a {
         align-items: center;
         gap: 2rem;
         text-align: center;
+        min-height: 0;
     }
 
     .footer-links {
         text-align: center;
-        margin-left: 0;
-        margin-right: 0;
     }
 
     .footer-copyright {
-        margin-top: 1rem;
-        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+        padding-top: 0.5rem;
     }
 
     .footer-logo .logo {

@@ -1,6 +1,9 @@
 /Terms_of_service /terms.html 200
 /Privacy_policy /privacy.html 200
 /Refund_policy /refund.html 200
+/terms /Terms_of_service 301
+/privacy /Privacy_policy 301
+/refund /Refund_policy 301
 /terms.html /Terms_of_service 301
 /privacy.html /Privacy_policy 301
 /refund.html /Refund_policy 301

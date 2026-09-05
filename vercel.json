@@ -5,6 +5,9 @@
     { "source": "/Refund_policy", "destination": "/refund.html" }
   ],
   "redirects": [
+    { "source": "/terms", "destination": "/Terms_of_service", "permanent": true },
+    { "source": "/privacy", "destination": "/Privacy_policy", "permanent": true },
+    { "source": "/refund", "destination": "/Refund_policy", "permanent": true },
     { "source": "/terms.html", "destination": "/Terms_of_service", "permanent": true },
     { "source": "/privacy.html", "destination": "/Privacy_policy", "permanent": true },
     { "source": "/refund.html", "destination": "/Refund_policy", "permanent": true }

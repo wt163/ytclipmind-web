@@ -124,7 +124,7 @@ function initializeFooterInteractions() {
         // Handle link targets
         const href = link.getAttribute('href');
         
-        if (href && (href.startsWith('https://ytclipmind.com/') || href.endsWith('.html'))) {
+        if (href && (href.startsWith('https://ytclipmind.com/') || href.endsWith('.html') || href.includes('-policy') || href.includes('-service'))) {
             // Legal page links - open in new tab
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');

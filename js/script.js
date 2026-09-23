@@ -3,6 +3,7 @@
 
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
+    initializeCarouselImages();
     // Initialize all carousels
     initializeCarousels();
     
@@ -11,7 +12,177 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize install button
     initializeInstallButton();
+
+    initializePricingTabs();
+    initializeFaqAccordion();
 });
+
+const PRO_PRICING = {
+    monthly: {
+        amount: '$6.99/Month',
+        billing: 'Billed monthly'
+    },
+    quarterly: {
+        amount: '$18.85/Quarter',
+        billing: '$6.28/month (10% OFF)'
+    },
+    semiannual: {
+        amount: '$35.65/6 Months',
+        billing: '$5.94/month (15% OFF)'
+    },
+    annual: {
+        amount: '$67.00/Year',
+        billing: '$5.58/month (20% OFF)'
+    },
+    lifetime: {
+        amount: '$99',
+        billing: 'Pay once, Pro forever'
+    }
+};
+
+function initializePricingTabs() {
+    const options = document.querySelectorAll('.billing-option');
+    const amountEl = document.getElementById('pricingAmount');
+    const billingEl = document.getElementById('pricingBilling');
+
+    if (!options.length || !amountEl || !billingEl) return;
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            const plan = option.getAttribute('data-plan');
+            const pricing = PRO_PRICING[plan];
+            if (!pricing) return;
+
+            options.forEach(btn => {
+                const isActive = btn === option;
+                btn.classList.toggle('is-active', isActive);
+                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+
+            amountEl.textContent = pricing.amount;
+            billingEl.textContent = pricing.billing;
+        });
+    });
+}
+
+function initializeFaqAccordion() {
+    const questions = document.querySelectorAll('.faq-question');
+
+    questions.forEach(question => {
+        question.addEventListener('click', () => {
+            const expanded = question.getAttribute('aria-expanded') === 'true';
+            const answer = question.nextElementSibling;
+
+            question.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            if (answer && answer.classList.contains('faq-answer')) {
+                answer.hidden = expanded;
+            }
+        });
+    });
+}
+
+/**
+ * Lazy-load carousel screenshots (WebP first, PNG fallback).
+ * Only the first Free slide is eager; others load when needed or when idle.
+ */
+function initializeCarouselImages() {
+    const carousels = document.querySelectorAll('[data-carousel]');
+
+    carousels.forEach(carousel => {
+        const screenshots = carousel.querySelectorAll('.screenshot');
+        const isPro = carousel.getAttribute('data-carousel') === 'pro';
+
+        screenshots.forEach((img, index) => {
+            if (img.dataset.loaded === 'true' || img.getAttribute('src')) {
+                img.dataset.loaded = 'true';
+                return;
+            }
+
+            // Free carousel: load first slide immediately (also preloaded in HTML head)
+            if (!isPro && index === 0) {
+                loadCarouselScreenshot(img);
+                return;
+            }
+
+            if (isPro && index === 0) {
+                return;
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                entry.target.querySelectorAll('.screenshot[data-lazy-src]').forEach(img => {
+                    loadCarouselScreenshot(img);
+                });
+
+                observer.unobserve(entry.target);
+            });
+        }, { rootMargin: '200px 0px' });
+
+        observer.observe(carousel);
+    });
+
+    scheduleCarouselPrefetch();
+}
+
+function loadCarouselScreenshot(img) {
+    if (!img || img.dataset.loaded === 'true') {
+        return Promise.resolve();
+    }
+
+    const png = img.dataset.lazySrc;
+    const webp = img.dataset.lazyWebp;
+    const eagerSrc = img.getAttribute('src');
+
+    if (eagerSrc) {
+        img.dataset.loaded = 'true';
+        return Promise.resolve();
+    }
+
+    if (!png && !webp) {
+        return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+        const finish = () => {
+            img.dataset.loaded = 'true';
+            resolve();
+        };
+
+        const tryPng = () => {
+            if (!png) {
+                finish();
+                return;
+            }
+            img.onerror = () => finish();
+            img.onload = finish;
+            img.src = png;
+        };
+
+        img.onerror = tryPng;
+        img.onload = finish;
+        img.src = webp || png;
+    });
+}
+
+function scheduleCarouselPrefetch() {
+    const run = () => {
+        const freeCarousel = document.querySelector('[data-carousel="free"]');
+        if (freeCarousel) {
+            freeCarousel.querySelectorAll('.screenshot[data-lazy-src]').forEach(img => {
+                loadCarouselScreenshot(img);
+            });
+        }
+    };
+
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(run, { timeout: 2500 });
+    } else {
+        setTimeout(run, 1500);
+    }
+}
 
 /**
  * Initialize all carousel functionality
@@ -94,7 +265,11 @@ class CarouselController {
         
         // Update dots
         this.dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
+            const isActive = i === index;
+            dot.classList.toggle('active', isActive);
+            if (dot.hasAttribute('role') && dot.getAttribute('role') === 'tab') {
+                dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            }
         });
         
         this.currentIndex = index;
@@ -102,10 +277,18 @@ class CarouselController {
     
     nextSlide() {
         const nextIndex = (this.currentIndex + 1) % this.screenshots.length;
+        const target = this.screenshots[nextIndex];
+        if (target) {
+            loadCarouselScreenshot(target);
+        }
         this.showSlide(nextIndex);
     }
     
     goToSlide(index) {
+        const target = this.screenshots[index];
+        if (target) {
+            loadCarouselScreenshot(target);
+        }
         this.showSlide(index);
         this.restartAutoPlay(); // Reset timer when user interacts
     }

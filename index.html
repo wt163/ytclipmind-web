@@ -8,269 +8,220 @@
     <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
     <link rel="apple-touch-icon" href="favicon-48.png">
     <title>YT ClipMind - Turn YouTube Videos into Interactive Clips and Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preload" as="image" href="assets/free-screenshot-1.webp" type="image/webp">
 </head>
 <body>
     <!-- Hero Section -->
     <header class="hero-section">
-        <div class="hero-gradient"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Turn YouTube Videos into Interactive Clips and Notes
-            </h1>
-            <p class="hero-subtitle">
-                Clip multi-source videos, write Markdown notes, collaborate with others, and generate one-click AI summaries
-            </p>
-            <button class="cta-button" id="installButton">
-                Install / coming soon...
-            </button>
+        <div class="hero-background" aria-hidden="true">
+            <div class="hero-gradient"></div>
+            <img class="hero-decoration" src="assets/web-image.png" alt="" width="533" height="533" decoding="async">
+        </div>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Turn YouTube Videos into Interactive Clips and Notes
+                    </h1>
+                    <p class="hero-subtitle">
+                        Clip multi-source videos, write Markdown notes, collaborate with others, and generate one-click AI summaries
+                    </p>
+                </div>
+                <button class="cta-button" id="installButton" type="button">
+                    Install on chrome for free
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Free Plan Section -->
-    <section class="plan-section">
-        <div class="plan-header">
-            <h2 class="plan-title">Free Plan</h2>
-            <p class="plan-subtitle">Create, organize, and share YouTube clips with notes</p>
-        </div>
-        
-        <!-- Free Screenshot Carousel -->
-        <div class="carousel-container" data-carousel="free">
-            <div class="screenshot-wrapper">
-                <img src="assets/free-screenshot-1.png" alt="Free Plan Screenshot 1" class="screenshot active" data-index="0">
-                <img src="assets/free-screenshot-2.png" alt="Free Plan Screenshot 2" class="screenshot" data-index="1" >
-                <img src="assets/free-screenshot-3.png" alt="Free Plan Screenshot 3" class="screenshot" data-index="2" >
-            </div>
-            <div class="carousel-dots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-            </div>
-        </div>
+    <main class="landing-page">
+        <!-- Free Version -->
+        <section class="version-section" aria-labelledby="free-version-heading">
+            <h2 id="free-version-heading" class="gradient-heading">
+                <span class="gradient-heading-line">Free Version</span>
+                <span class="gradient-heading-line gradient-heading-line--subtitle">Create, organize, and share YouTube clips with notes</span>
+            </h2>
 
-        <p class="section-label">Free features</p>
-
-        <!-- Free Features -->
-        <div class="features-container">
-            <div class="features-left">
-                <div class="user-icon"></div>
-                <h3 class="user-title">Guest Extension Users</h3>
-                <div class="features-list">
-                    <p class="feature-item">✅ Embed Custom YouTube Video Segments</p>
-                    <p class="feature-description">Insert and embed a precise YouTube clip with custom start and stop timestamps.</p>
-                    
-                    <p class="feature-item">✅ Take Markdown Notes Side-by-Side</p>
-                    <p class="feature-description">Watch your favorite YouTube videos alongside a dedicated Markdown note panel.</p>
-                    
-                    <p class="feature-item">✅ Export Markdown Notes Only</p>
-                    <p class="feature-description">Instantly download Markdown (.md) files directly to local storage.</p>
+            <div class="carousel-container carousel-container--free" data-carousel="free">
+                <div class="screenshot-wrapper screenshot-wrapper--free">
+                    <img src="assets/free-screenshot-1.webp" alt="Free Plan Screenshot 1" class="screenshot active" data-index="0" decoding="async" fetchpriority="high" width="750" height="370" onerror="this.onerror=null;this.src='assets/free-screenshot-1.png'">
+                    <img alt="Free Plan Screenshot 2" class="screenshot" data-index="1" decoding="async" width="750" height="370" data-lazy-webp="assets/free-screenshot-2.webp" data-lazy-src="assets/free-screenshot-2.png">
+                    <img alt="Free Plan Screenshot 3" class="screenshot" data-index="2" decoding="async" width="750" height="370" data-lazy-webp="assets/free-screenshot-3.webp" data-lazy-src="assets/free-screenshot-3.png">
+                </div>
+                <div class="carousel-dots carousel-dots--free" role="tablist" aria-label="Free plan screenshots">
+                    <span class="dot active" data-index="0" role="tab" aria-selected="true"></span>
+                    <span class="dot" data-index="1" role="tab" aria-selected="false"></span>
+                    <span class="dot" data-index="2" role="tab" aria-selected="false"></span>
                 </div>
             </div>
-            
-            <div class="features-right">
-                <div class="features-content-right">
-                    <div class="features-list">
-                        <p class="feature-item">✅ Loop video with Custom Playback Speeds</p>
-                        <p class="feature-description">Repeat a specific video segment automatically with adjustable speeds.</p>
-                        
-                        <p class="feature-item">✅ Save & Sync Video Links with Notes</p>
-                        <p class="feature-description">Keep your video URLs and matching Markdown notes paired and up to date.</p>
-                        
-                        <p class="feature-item">✅ Share Shared-Link Co-Editing</p>
-                        <p class="feature-description">Send a permanent, single link that allows collaborators to edit the exact same note directly.</p>
+
+            <p class="section-label section-label--center">Free features</p>
+
+            <div class="plan-card plan-card--free">
+                <h3 class="plan-card-title">Free Plan</h3>
+                <p class="plan-card-lead">What are the features:</p>
+                <div class="feature-grid">
+                    <article class="feature-block">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Embed Custom YouTube Video Segments</p>
+                            <p class="feature-block-desc">Insert and embed a precise YouTube clip with custom start and stop timestamps.</p>
+                        </div>
+                    </article>
+                    <article class="feature-block">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Loop video with Custom Playback Speeds</p>
+                            <p class="feature-block-desc">Repeat a specific video segment automatically with adjustable speeds.</p>
+                        </div>
+                    </article>
+                    <article class="feature-block">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Take Markdown Notes Side-by-Side</p>
+                            <p class="feature-block-desc">Watch your favorite YouTube videos alongside a dedicated Markdown note panel.</p>
+                        </div>
+                    </article>
+                    <article class="feature-block">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Save &amp; Sync Video Links with Notes</p>
+                            <p class="feature-block-desc">Keep your video URLs and matching Markdown notes paired and up to date.</p>
+                        </div>
+                    </article>
+                    <article class="feature-block">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Export Markdown Notes Only</p>
+                            <p class="feature-block-desc">Instantly download Markdown (.md) files directly to local storage.</p>
+                        </div>
+                    </article>
+                    <article class="feature-block">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Share Shared-Link Co-Editing</p>
+                            <p class="feature-block-desc">Send a permanent, single link that allows collaborators to edit the exact same note directly.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pro Version -->
+        <section class="version-section" aria-labelledby="pro-version-heading">
+            <h2 id="pro-version-heading" class="gradient-heading">
+                <span class="gradient-heading-line">Pro Version</span>
+                <span class="gradient-heading-line gradient-heading-line--subtitle">Advanced video workflows with AI-powered productivity&nbsp;tools</span>
+            </h2>
+
+            <div class="carousel-container carousel-container--pro" data-carousel="pro">
+                <div class="screenshot-wrapper screenshot-wrapper--pro">
+                    <img alt="Pro Plan Screenshot 1" class="screenshot active" data-index="0" decoding="async" width="930" height="370" data-lazy-webp="assets/pro-screenshot-1.webp" data-lazy-src="assets/pro-screenshot-1.png">
+                    <img alt="Pro Plan Screenshot 2" class="screenshot" data-index="1" decoding="async" width="930" height="370" data-lazy-webp="assets/pro-screenshot-2.webp" data-lazy-src="assets/pro-screenshot-2.png">
+                    <img alt="Pro Plan Screenshot 3" class="screenshot" data-index="2" decoding="async" width="930" height="370" data-lazy-webp="assets/pro-screenshot-3.webp" data-lazy-src="assets/pro-screenshot-3.png">
+                    <img alt="Pro Plan Screenshot 4" class="screenshot" data-index="3" decoding="async" width="930" height="370" data-lazy-webp="assets/pro-screenshot-4.webp" data-lazy-src="assets/pro-screenshot-4.png">
+                </div>
+                <div class="carousel-dots carousel-dots--pro" role="tablist" aria-label="Pro plan screenshots">
+                    <span class="dot active" data-index="0" role="tab" aria-selected="true"></span>
+                    <span class="dot" data-index="1" role="tab" aria-selected="false"></span>
+                    <span class="dot" data-index="2" role="tab" aria-selected="false"></span>
+                    <span class="dot" data-index="3" role="tab" aria-selected="false"></span>
+                </div>
+            </div>
+
+            <p class="section-label section-label--center">Pro features</p>
+
+            <div class="plan-card plan-card--pro">
+                <h3 class="plan-card-title plan-card-title--center">PRO Plan</h3>
+
+                <div class="billing-toggle" role="tablist" aria-label="Pro billing period">
+                    <button type="button" class="billing-option is-active" data-plan="monthly" role="tab" aria-selected="true">Monthly</button>
+                    <button type="button" class="billing-option" data-plan="quarterly" role="tab" aria-selected="false">Quarterly</button>
+                    <button type="button" class="billing-option" data-plan="semiannual" role="tab" aria-selected="false">Semi-annual</button>
+                    <button type="button" class="billing-option" data-plan="annual" role="tab" aria-selected="false">Annual</button>
+                    <button type="button" class="billing-option" data-plan="lifetime" role="tab" aria-selected="false">Lifetime</button>
+                </div>
+
+                <div class="pricing-display" id="pricingDisplay">
+                    <p class="pricing-amount" id="pricingAmount">$6.99/Month</p>
+                    <p class="pricing-billing" id="pricingBilling">Billed monthly</p>
+                </div>
+
+                <p class="plan-card-lead">What are the features:</p>
+                <div class="feature-list-pro">
+                    <article class="feature-row">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <p class="feature-row-text">Everything from Free Plan</p>
+                    </article>
+                    <article class="feature-row">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Multi-Source &amp; Multi-Segment Embedding[PRO]</p>
+                            <p class="feature-block-desc">Combine clips from multiple YouTube videos in one player—each with custom chapter titles—and play them back in order with exact start/stop times.</p>
+                        </div>
+                    </article>
+                    <article class="feature-row">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">One-Click AI Summary[PRO]</p>
+                            <p class="feature-block-desc">Get instant AI summaries across all segments in your project. Results flow straight into your Markdown notes. (Up to 3 runs/day; ~2 hours of source video per run for best quality.)</p>
+                        </div>
+                    </article>
+                    <article class="feature-row">
+                        <img src="assets/Check%20circle.svg" alt="" class="feature-check" width="35" height="35" aria-hidden="true">
+                        <div>
+                            <p class="feature-block-title">Advanced link sharing [PRO]</p>
+                            <p class="feature-block-desc">View-only links, shared co-editing on one URL, or edit-with-fork-on-save so collaborators never overwrite your original note.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="gradient-heading gradient-heading--faq">
+                <span class="gradient-heading-line">FAQ</span>
+            </h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">How do I cancel my Pro subscription?</span>
+                        <img src="assets/Chevron%20down.svg" alt="" class="faq-chevron" width="34" height="44" aria-hidden="true">
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <hr class="faq-divider">
+                        <p>You can cancel from your account Settings. Open the Manage subscription in Paddle link (or the subscription management option in your Paddle receipt email). Canceling stops future renewals; you usually keep Pro access until the end of the current billing period.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can anyone play a shared link?</span>
+                        <img src="assets/Chevron%20down.svg" alt="" class="faq-chevron" width="34" height="44" aria-hidden="true">
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <hr class="faq-divider">
+                        <p>Most of the time, yes — anyone with the link can open and play the clip on our player page.</p>
+                        <p>Sometimes YouTube requires a signed-in Google/YouTube account for playback to work normally (for example, age-restricted or region-limited videos). That requirement comes from YouTube, not from YT ClipMind.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        <span class="faq-question-text">Can someone use AI Summary on a link I shared?</span>
+                        <img src="assets/Chevron%20down.svg" alt="" class="faq-chevron" width="34" height="44" aria-hidden="true">
+                    </button>
+                    <div class="faq-answer" hidden>
+                        <hr class="faq-divider">
+                        <p>No. AI Summary uses their YT ClipMind account and their Pro plan—not yours. Viewers need to sign in with their own Pro account to use AI (within daily limits).</p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Workflow Diagram Space for Free Plan -->
-        <div class="workflow-diagram-space">
-            <!-- 这里放置流程图图片 -->
-            <img src="assets/free-workflow-diagram.svg" alt="Free Plan Workflow" class="workflow-image">
-        </div>
-
-        <!-- Free Plan Additional Users -->
-        <div class="features-container">
-            <div class="features-left">
-                <div class="user-icon"></div>
-                <h3 class="user-title">Non-Extension Users</h3>
-                <div class="features-list">
-                    <p class="feature-item">✅ Loop video with Custom Playback Speeds</p>
-                    <p class="feature-item">✅ Save & Sync Video Links with Notes</p>
-                    <p class="feature-item">✅ Share Full Co-Editing Access</p>
-                </div>
-            </div>
-            
-            <div class="features-right">
-                <div class="features-content-right">
-                    <div class="features-list">
-                        <p class="feature-item">✅ Take Markdown Notes Side-by-Side</p>
-                        <p class="feature-item">✅ Share View-Only Note Access</p>
-                        <p class="feature-item">✅ Export Markdown Notes Only</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Pro Plan Section -->
-    <section class="plan-section pro-section">
-        <div class="plan-header">
-            <h2 class="plan-title">Pro Plan</h2>
-            <p class="plan-subtitle">Advanced video workflows with AI-powered productivity tools</p>
-        </div>
-        
-        <!-- Pro Screenshot Carousel -->
-        <div class="carousel-container" data-carousel="pro">
-            <div class="screenshot-wrapper">
-                <img src="assets/pro-screenshot-1.png" alt="Pro Plan Screenshot 1" class="screenshot active" data-index="0">
-                <img src="assets/pro-screenshot-2.png" alt="Pro Plan Screenshot 2" class="screenshot" data-index="1" >
-                <img src="assets/pro-screenshot-3.png" alt="Pro Plan Screenshot 3" class="screenshot" data-index="2" >
-                <img src="assets/pro-screenshot-4.png" alt="Pro Plan Screenshot 4" class="screenshot" data-index="3" >
-            </div>
-            <div class="carousel-dots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-                <span class="dot" data-index="3"></span>
-            </div>
-        </div>
-
-        <p class="section-label">Pro features</p>
-
-        <!-- Pro Features -->
-        <div class="features-container">
-            <div class="features-left">
-                <div class="user-icon"></div>
-                <h3 class="user-title">Registered Extension Users</h3>
-                <div class="features-list">
-                    <p class="feature-item">✅ Multi-Source & Multi-Segment Embedding[PRO]</p>
-                    <p class="feature-description">Insert multiple segments from different YouTube URLs with custom titles (chapters). All segments play sequentially with precise, automated start and stop timestamps.</p>
-                    
-                    <p class="feature-item">✅ One-Click AI Summary[PRO]</p>
-                    <p class="feature-description">Generate instant, comprehensive AI details & summaries for all video segments together. Content automatically exports to the Markdown note panel. (💡Hint:3 AI runs/day · 2h total max per run for AI quality)</p>
-                    
-                    <p class="feature-item">✅ Share Fork-on-Save Co-Editing[PRO]</p>
-                    <p class="feature-description">Send a collaboration link that allows editing, but generates a brand-new link upon saving to prevent overwriting the original note.</p>
-                </div>
-            </div>
-            
-            <div class="features-right">
-                <div class="features-content-right">
-                    <div class="features-list">
-                        <p class="feature-item">✅ Loop with Custom Playback Speeds</p>
-                        <p class="feature-description">Repeat a specific video segment automatically with adjustable speeds.</p>
-                        
-                        <p class="feature-item">✅ Take Markdown Notes Side-by-Side</p>
-                        <p class="feature-description">Watch your favorite YouTube videos alongside a dedicated Markdown note panel.</p>
-                        
-                        <p class="feature-item">✅ Save & Sync Video Links with Notes</p>
-                        <p class="feature-description">Keep your video URLs and matching Markdown notes paired and up to date.</p>
-                        
-                        <p class="feature-item">✅ Share View-Only Note Access</p>
-                        <p class="feature-description">Generate a safe read-only link for others to view your notes alongside the video.</p>
-                        
-                        <p class="feature-item">✅ Share Shared-Link Co-Editing</p>
-                        <p class="feature-description">Send a permanent, single link that allows collaborators to edit the exact same note directly.</p>
-                        
-                        <p class="feature-item">✅ Export Markdown Notes Only</p>
-                        <p class="feature-description">Instantly download Markdown (.md) files directly to local storage.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Workflow Diagram Space for Pro Plan -->
-        <div class="workflow-diagram-space pro-diagram">
-            <!-- 这里放置Pro流程图图片 -->
-            <img src="assets/pro-workflow-diagram.svg" alt="Pro Plan Workflow" class="workflow-image">
-        </div>
-
-        <!-- Additional Pro Users Section -->
-        <div class="additional-users-section">
-            <div class="additional-users-left">
-                <div class="user-icon"></div>
-                <h3 class="user-title">Guest & Non-Extension Users</h3>
-                <div class="features-list">
-                    <p class="feature-item">✅ Loop video with Custom Playback Speeds</p>
-                    <p class="feature-item">✅ Take Markdown Notes Side-by-Side</p>
-                    <p class="feature-item">✅ Save & Sync Video Links with Notes</p>
-                    <p class="feature-item">✅ Share View-Only Note Access</p>
-                    <p class="feature-item">✅ Share Full Co-Editing Access</p>
-                    <p class="feature-item">✅ Share Fork-on-Save Co-Editing</p>
-                    <p class="feature-item">✅ Export Markdown Notes Only</p>
-                    <p class="feature-item">✅ One-Click AI Summary(Only for registered user)</p>
-                </div>
-            </div>
-            
-            <div class="additional-users-right">
-                <div class="user-icon"></div>
-                <h3 class="user-title">Non-Extension Users</h3>
-                <div class="features-list">
-                    <p class="feature-item">✅ Loop video with Custom Playback Speeds</p>
-                    <p class="feature-item">✅ Share View-Only Note Access</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <h2 class="section-title">Pro pricing</h2>
-        
-        <div class="pricing-grid">
-            <!-- Monthly Plan -->
-            <div class="pricing-card">
-                <h3 class="plan-name">Monthly</h3>
-                <p class="plan-price">
-                    <span class="price">$6.99</span>
-                    <span class="period">/ month</span>
-                </p>
-                <p class="billing-info">Billed monthly</p>
-            </div>
-
-            <!-- Quarterly Plan -->
-            <div class="pricing-card">
-                <h3 class="plan-name">Quarterly</h3>
-                <p class="plan-price">
-                    <span class="price">$18.85</span>
-                    <span class="period">/ 3 months</span>
-                </p>
-                <p class="billing-info discount">$6.28/month( 10% OFF)</p>
-            </div>
-
-            <!-- 6 Months Plan -->
-            <div class="pricing-card">
-                <h3 class="plan-name">6 Months</h3>
-                <p class="plan-price">
-                    <span class="price">$35.65</span>
-                    <span class="period">/ 6 months</span>
-                </p>
-                <p class="billing-info discount">$5.94/month( 15% OFF)</p>
-            </div>
-
-            <!-- Yearly Plan -->
-            <div class="pricing-card">
-                <h3 class="plan-name">Yearly</h3>
-                <p class="plan-price">
-                    <span class="price">$67.00</span>
-                    <span class="period">/ year</span>
-                </p>
-                <p class="billing-info discount">$5.58/month( 20% OFF)</p>
-            </div>
-
-            <!-- Lifetime Plan -->
-            <div class="pricing-card lifetime">
-                <h3 class="plan-name">Lifetime</h3>
-                <p class="plan-price">
-                    <span class="price">$99</span>
-                    <span class="period">/ one-time</span>
-                </p>
-                <p class="billing-info discount">Pay once, Pro forever</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">

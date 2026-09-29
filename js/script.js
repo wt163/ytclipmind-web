@@ -311,6 +311,9 @@ function initializeFooterInteractions() {
             // Legal page links - open in new tab
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
+        } else if (href && (href.includes('youtube.com') || href.includes('youtu.be'))) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
         } else if (href && href.startsWith('mailto:')) {
             // Email links - open in same window (default mailto behavior)
             link.setAttribute('target', '_self');

@@ -125,6 +125,11 @@ a {
 }
 
 .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-sizing: border-box;
     background: #fff;
     color: #000;
     border: none;

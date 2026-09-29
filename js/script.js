@@ -326,16 +326,11 @@ function initializeInstallButton() {
     
     if (installButton) {
         installButton.addEventListener('click', function() {
-            // Add click animation
             this.style.transform = 'translateY(-2px) scale(0.98)';
-            
+
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
-            
-            // Here you would typically redirect to Chrome Web Store
-            // For now, we'll just log the action
-            console.log('Install button clicked - would redirect to Chrome Web Store');
         });
     }
 }
